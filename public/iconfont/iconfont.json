@@ -1,0 +1,23 @@
+{
+  "id": "3453526",
+  "name": "no name",
+  "font_family": "iconfont",
+  "css_prefix_text": "icon-",
+  "description": "",
+  "glyphs": [
+    {
+      "icon_id": "1309",
+      "name": "退出",
+      "font_class": "tuichu",
+      "unicode": "e600",
+      "unicode_decimal": 58880
+    },
+    {
+      "icon_id": "19188275",
+      "name": "男",
+      "font_class": "nan1",
+      "unicode": "e625",
+      "unicode_decimal": 58917
+    }
+  ]
+}

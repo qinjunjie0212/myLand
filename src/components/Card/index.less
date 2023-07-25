@@ -1,0 +1,50 @@
+.card-wai {
+    float: left;
+    padding: 25px 0 0 25px;
+    .card-box {
+        // width: 234px;
+        // border: 1px solid black;
+        display: flex;
+        align-items: center;
+        flex-direction: column;
+
+        .cardSrc {
+            width: 400px;
+            padding: 20px;
+            border-radius: 15%;
+        }
+        .cardMessage {
+           width: 80%; 
+           font-size: 15px;
+        }
+        .cardBotton {
+            width: 80%;
+            margin-top: 40px;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            .left {
+                display: flex;
+                align-items: center;
+                .userPic {
+                    width: 20px;
+                    border-radius: 50%;
+                    padding: 0;
+                }
+                .userName {
+                    font-size: 15px;
+                    padding-left: 5px;
+                }
+            }
+            .right {
+                .liked {
+                    width: 16px;
+                    height:16px;
+                    margin-right: 5px;
+                    cursor: pointer;
+                }
+            }
+        }
+    }
+    
+}

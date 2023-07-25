@@ -1,0 +1,119 @@
+.carousel {
+    width: 100%;
+    height: 100%;
+    position: relative;
+    display: flex;
+    align-items: center;
+    border-top-left-radius: 20px;
+    border-bottom-left-radius: 20px;
+    img {
+        width: 812.5px;
+        height: 800px;
+    }
+    .arrow {
+        width: 40px;
+        height: 40px;
+        border-radius: 50%;
+        position: absolute;
+        margin: auto;
+        border: 1px;
+        font-size: 20px;
+        opacity: 0;
+    }
+    .lastOne {
+        left: 0px;
+    }
+    .nextOne {
+        right:0px;
+    }
+    .points {
+        padding-inline-start: 0px;
+        position: absolute;
+        bottom: 20px;
+        margin: auto;
+        // left: 260px;
+        display: flex;
+        flex-direction: row;
+        text-align: center;
+        justify-content: center;
+        color: #cbcaca;
+        li {
+            font-size: 18px;
+            margin-left: 20px;
+        }
+    }
+    .numSize {
+        color: white;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        font-size: 12px;
+        border-radius: 50px;
+        width: 38px;
+        height: 25px;
+        opacity: 0;
+        position: absolute;
+        top: 30px;
+        right: 40px;
+        background-color: #9b9898;   
+    }
+    .active {
+        color:white;
+    }
+    &:hover{
+        .arrow{
+            animation-duration: 0.5s;
+            animation-fill-mode: forwards;
+        }
+        .lastOne {
+            animation-name: left;
+        }
+        .nextOne {
+            animation-name: right;
+        }
+        .numSize{
+            animation-name: numSize;
+            animation-duration: 0.5s;
+            animation-fill-mode: forwards;
+        }
+    }
+    .last-leave{
+        animation-name: leftLeave;
+        animation-duration: 0.5s;
+        animation-fill-mode: forwards;
+    }
+    .next-leave{
+        animation-name: rightLeave;
+        animation-duration: 0.5s;
+        animation-fill-mode: forwards;
+    }
+    .numSize-leave{
+        animation-name: numSizeLeave;
+        animation-duration: 0.5s;
+        animation-fill-mode: forwards;
+    }
+    @keyframes left {
+        0% {opacity: 0;left: 0px;}
+        100%{opacity: 1;left:10px;}
+    }
+    @keyframes right {
+        0% {opacity: 0;right: 0px;}
+        100%{opacity: 1;right:10px;}
+    }
+    @keyframes leftLeave {
+        0% {opacity: 1;left:10px;}
+        100%{opacity: 0;left: 0px;}
+    }
+    @keyframes rightLeave {
+        0% {opacity: 1;right:10px;}
+        100%{opacity: 0;right: 0px;}
+    }
+    @keyframes numSize {
+        0% {opacity: 0;}
+        100% {opacity: 0.7;}
+    }
+    @keyframes numSizeLeave {
+        0% {opacity: 0.7;}
+        100% {opacity: 0;}
+    }
+}

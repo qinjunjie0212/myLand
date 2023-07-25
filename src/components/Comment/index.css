@@ -1,0 +1,147 @@
+.comment-box {
+  width: 100%;
+  height: 100%;
+  border-top-right-radius: 20px;
+  border-bottom-right-radius: 20px;
+}
+.comment-box .comment-header {
+  height: 12%;
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+.comment-box .comment-header .user {
+  display: flex;
+  align-items: center;
+  cursor: pointer;
+}
+.comment-box .comment-header .user .userPic {
+  width: 50px;
+  height: 50px;
+  border-radius: 50%;
+  margin-left: 30px;
+}
+.comment-box .comment-header .user .userName {
+  margin-left: 10px;
+  font-size: 16px;
+  font-weight: 200px;
+}
+.comment-box .comment-header .attention {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 18px;
+  width: 68px;
+  height: 36px;
+  background: red;
+  font-weight: 500;
+  font-size: 14px;
+  color: white;
+  cursor: pointer;
+  margin-right: 20px;
+}
+.comment-box .comment-message .message-box {
+  width: 90%;
+  height: 90%;
+  margin-left: 5%;
+  margin-top: 5%;
+  border-bottom: 1px solid #c2c0c0;
+}
+.comment-box .comment-message .message-box .title {
+  font-size: 20px;
+  margin: 15px;
+  margin-bottom: 20px;
+  font-weight: 600;
+}
+.comment-box .comment-message .message-box .message {
+  margin-left: 15px;
+  line-height: 30px;
+}
+.comment-box .comment-message .message-box .time {
+  line-height: 20px;
+  margin-left: 15px;
+  margin-top: 20px;
+  margin-bottom: 20px;
+  font-size: 12px;
+  color: #6e6d6d;
+}
+.comment-box .comment-body {
+  width: 100%;
+  height: 42%;
+}
+.comment-box .comment-bottom {
+  position: absolute;
+  bottom: 25px;
+  width: 438px;
+  height: 130px;
+  display: inline;
+}
+.comment-box .comment-bottom .bottom-box {
+  border-top: 1px solid #c2c0c0;
+  width: 90%;
+  height: 90%;
+  margin-left: 5%;
+}
+.comment-box .comment-bottom .bottom-box .liked {
+  font-size: 25px;
+  display: flex;
+  align-items: center;
+  width: 100px;
+  margin: 0;
+  margin-top: 15px;
+  margin-left: 10px;
+}
+.comment-box .comment-bottom .bottom-box .liked .likeNum {
+  margin-left: 8px;
+  font-size: 15px;
+}
+.comment-box .comment-bottom .bottom-box .discuss {
+  position: absolute;
+  left: 110px;
+  top: 0px;
+  font-size: 23px;
+  display: flex;
+  align-items: center;
+  width: 100px;
+  margin: 0;
+  margin-top: 15px;
+  margin-left: 10px;
+}
+.comment-box .comment-bottom .bottom-box .discuss .discussNum {
+  margin-left: 8px;
+  font-size: 15px;
+}
+.comment-box .comment-bottom .bottom-box .pinglun-box .pinglun {
+  width: 280px;
+  height: 40px;
+  border-radius: 50px;
+  position: absolute;
+  bottom: 30px;
+  left: 30px;
+  background-color: #ddd9d9;
+  opacity: 0.7;
+  border: 0;
+  font-size: 16px;
+  padding-left: 40px;
+}
+.comment-box .comment-bottom .bottom-box .pinglun-box .pinglun:hover {
+  outline: none;
+}
+.comment-box .comment-bottom .bottom-box .pinglun-box .pen {
+  font-size: 20px;
+  opacity: 0.5;
+  position: absolute;
+  top: 68px;
+  left: 40px;
+}
+.comment-box .comment-bottom .bottom-box .pinglun-box .send {
+  height: 40px;
+  width: 60px;
+  background-color: #6ba3f1;
+  border: 0;
+  border-radius: 50px;
+  position: absolute;
+  bottom: 30px;
+  right: 15px;
+}

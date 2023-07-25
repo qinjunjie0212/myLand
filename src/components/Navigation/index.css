@@ -1,0 +1,268 @@
+.Header {
+  z-index: 0;
+  position: fixed;
+  width: 1600px;
+  height: 150px;
+  background-color: #ccdbea;
+  margin-left: 50px;
+  margin-top: 0px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+.Header .logo {
+  width: 250px;
+  height: 100px;
+  background-image: url(../../img/cat.jpg);
+  background-size: 100%;
+}
+.Header .search {
+  display: flex;
+  align-items: center;
+  position: relative;
+}
+.Header .search .search-input {
+  width: 550px;
+  height: 40px;
+  font-size: 16px;
+  background-color: #c3ddf8;
+  border-width: 2px;
+  border-radius: 50px;
+  border-color: transparent;
+  padding-left: 20px;
+  caret-color: #376ab3;
+}
+.Header .search .search-input:focus {
+  outline: none;
+}
+.Header .search .SearchOutlined {
+  font-size: 20px;
+  position: absolute;
+  right: 20px;
+  opacity: 0.4;
+}
+.Navigation-box {
+  box-sizing: border-box;
+  width: 250px;
+  height: 650px;
+  background-color: #376ab3;
+  position: fixed;
+  bottom: 60px;
+  border-radius: 15px;
+  margin-left: 50px;
+  font-size: 16px;
+}
+.Navigation-box .Navigation-head {
+  box-sizing: border-box;
+  height: 50px;
+  width: 180px;
+  margin-left: 20px;
+  margin-top: 10px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+.Navigation-box .Navigation-head .MenuOutlined {
+  font-size: 25px;
+}
+.Navigation-box .Navigation-head .userName {
+  padding: 15px;
+  font-size: 15px;
+}
+.Navigation-box .Navigation-body {
+  list-style-type: none;
+  margin-top: 30px;
+  margin-left: -25px;
+}
+.Navigation-box .Navigation-body .item {
+  padding: 10px;
+  padding-top: 15px;
+  width: 155px;
+  display: flex;
+  justify-content: space-between;
+}
+.Navigation-box .Navigation-body .item .item-icon {
+  font-size: 20px;
+  text-decoration: none;
+  color: black;
+}
+.Navigation-box .Navigation-body .item .item-label {
+  padding-left: 20px;
+  text-decoration: none;
+  color: black;
+  position: absolute;
+  right: 70px;
+}
+.Navigation-box .Navigation-body .item a {
+  text-decoration: none;
+  color: blue;
+}
+.Navigation-box .Navigation-foot {
+  position: absolute;
+  bottom: 20px;
+  left: 15px;
+  width: 200px;
+  height: 150px;
+  display: flex;
+  flex-direction: column;
+}
+.Navigation-box .Navigation-foot .to-homepage {
+  width: 200px;
+  height: 180px;
+  margin-bottom: 20px;
+  color: black;
+}
+.Navigation-box .Navigation-foot .to-homepage .head-pic {
+  position: absolute;
+  bottom: 60px;
+  width: 70px;
+  height: 70px;
+  background-image: url(../../img/headPic.jpg);
+  background-size: 100%;
+  border-radius: 50%;
+}
+.Navigation-box .Navigation-foot .to-homepage .RightOutlined {
+  position: absolute;
+  bottom: 80px;
+  right: 15px;
+  font-size: 20px;
+}
+.Navigation-box .Navigation-foot .ExportOutlined {
+  position: absolute;
+  bottom: 5px;
+  left: 100px;
+  font-size: 25px;
+}
+@keyframes noOpen {
+  0% {
+    width: 250px;
+    font-size: 0px;
+  }
+  100% {
+    width: 70px;
+    font-size: 0px;
+  }
+}
+@keyframes open {
+  0% {
+    width: 70px;
+    font-size: 0px;
+  }
+  99% {
+    width: 249px;
+    font-size: 0px;
+  }
+  100% {
+    width: 250px;
+    font-size: 15px;
+  }
+}
+@keyframes noOpen-pic {
+  0% {
+    width: 70px;
+    height: 70px;
+  }
+  100% {
+    width: 40px;
+    height: 40px;
+  }
+}
+@keyframes open-pic {
+  0% {
+    width: 40px;
+    height: 40px;
+  }
+  100% {
+    width: 70px;
+    height: 70px;
+  }
+}
+@keyframes noOpen-other {
+  0% {
+    font-size: 0px;
+  }
+  100% {
+    font-size: 0px;
+  }
+}
+@keyframes open-other {
+  0% {
+    font-size: 0px;
+  }
+  25% {
+    font-size: 0px;
+    right: 100px;
+  }
+  50% {
+    font-size: 0px;
+    right: 60px;
+  }
+  75% {
+    font-size: 0px;
+    right: 30px;
+  }
+  100% {
+    font-size: 20px;
+    right: 15px;
+  }
+}
+@keyframes noOpen-back {
+  0% {
+    left: 100px;
+  }
+  100% {
+    left: 8px;
+  }
+}
+@keyframes open-back {
+  0% {
+    left: 8px;
+  }
+  100% {
+    left: 100px;
+  }
+}
+.noOpen-back {
+  animation-name: noOpen-back;
+  animation-duration: 1s;
+  animation-iteration-count: 1;
+  animation-fill-mode: forwards;
+}
+.open-back {
+  animation-name: open-back;
+  animation-iteration-count: 1;
+  animation-duration: 1s;
+}
+.noOpen-other {
+  animation-name: noOpen-other;
+  animation-duration: 1s;
+  animation-iteration-count: 1;
+  animation-fill-mode: forwards;
+}
+.open-other {
+  animation-name: open-other;
+  animation-iteration-count: 1;
+  animation-duration: 1s;
+}
+.noOpen-pic {
+  animation-name: noOpen-pic;
+  animation-duration: 1s;
+  animation-iteration-count: 1;
+  animation-fill-mode: forwards;
+}
+.open-pic {
+  animation-name: open-pic;
+  animation-iteration-count: 1;
+  animation-duration: 1s;
+}
+.noOpen {
+  animation-name: noOpen;
+  animation-duration: 1s;
+  animation-iteration-count: 1;
+  animation-fill-mode: forwards;
+}
+.open {
+  animation-name: open;
+  animation-iteration-count: 1;
+  animation-duration: 1s;
+}

@@ -1,0 +1,77 @@
+.HomePage-box {
+  z-index: -1;
+}
+.HomePage-box .information-box {
+  width: 100%;
+  height: 230px;
+  display: flex;
+  justify-content: center;
+}
+.HomePage-box .information-box .userPic {
+  background-size: 100%;
+  width: 180px;
+  height: 180px;
+  border-radius: 50%;
+}
+.HomePage-box .information-box .information {
+  margin-left: 60px;
+  margin-top: 20px;
+  width: 200px;
+  height: 200px;
+}
+.HomePage-box .information-box .information .userName {
+  margin: 0px;
+  margin-bottom: 10px;
+}
+.HomePage-box .information-box .information .id-ip {
+  width: 100%;
+  height: 20px;
+  margin-bottom: 10px;
+  font-size: 10px;
+  color: #5c5c5c;
+}
+.HomePage-box .information-box .information .sex {
+  width: 40px;
+  height: 15px;
+  background-color: #bdbbbb;
+  border-radius: 50px;
+  opacity: 0.7;
+  display: flex;
+  align-items: center;
+  font-size: 12px;
+  margin-bottom: 20px;
+}
+.HomePage-box .information-box .information .fans-number {
+  width: 40%;
+  height: 20px;
+  font-size: 10px;
+  color: #5c5c5c;
+  display: flex;
+  justify-content: space-between;
+}
+.HomePage-box .navigation {
+  list-style-type: none;
+  width: 300px;
+  margin: 0;
+  margin-left: 320px;
+}
+.HomePage-box .navigation li {
+  display: inline-block;
+  margin-left: 50px;
+  width: 50px;
+  height: 20px;
+  text-align: center;
+  font-size: 14px;
+}
+.HomePage-box .navigation li a {
+  text-decoration: none;
+  color: black;
+}
+.HomePage-box .navigation .li-active {
+  background-color: #b9b7b7;
+  opacity: 0.7;
+  border-radius: 50px;
+}
+.HomePage-box .production {
+  height: 200px;
+}

@@ -1,0 +1,30 @@
+.detail-wai {
+  width: 1600px;
+  height: 850px;
+  background-color: #ccdbea;
+  position: absolute;
+  top: -130px;
+  left: -300px;
+  z-index: 566;
+  display: flex;
+}
+.detail-wai .detail-box {
+  width: 1250px;
+  height: 800px;
+  margin: auto;
+  box-sizing: border-box;
+  border-radius: 20px;
+  background-color: white;
+  display: flex;
+  justify-content: space-between;
+}
+.detail-wai .detail-box .detail-left {
+  width: 65%;
+  height: 100%;
+  display: flex;
+  flex-direction: row;
+}
+.detail-wai .detail-box .detail-right {
+  width: 35%;
+  height: 100%;
+}
