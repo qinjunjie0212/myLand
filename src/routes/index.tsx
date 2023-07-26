@@ -7,11 +7,16 @@ import Like from '../components/Like'
 import Issue from '../components/Issue'
 import Inform from '../components/Inform'
 import Detail from '../components/Detail'
+import Login from '../components/Login'
 
 const routes = [
     {
         path:'/',
         element:<Navigate to="/home"></Navigate>
+    },
+    {
+        path:'/login',
+        element:<Login></Login>
     },
     {
         path:'/home/*',

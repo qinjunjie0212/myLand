@@ -1,4 +1,5 @@
 .comment-box {
+  overflow: hidden;
   width: 100%;
   height: 100%;
   border-top-right-radius: 20px;
@@ -41,24 +42,30 @@
   cursor: pointer;
   margin-right: 20px;
 }
-.comment-box .comment-message .message-box {
+.comment-box .scrollTable {
+  overflow: auto;
+  height: 71%;
+  /* 设置滚动内容的样式 */
+  /* 设置滚轨的样式 */
+}
+.comment-box .scrollTable .comment-message .message-box {
   width: 90%;
   height: 90%;
   margin-left: 5%;
   margin-top: 5%;
   border-bottom: 1px solid #c2c0c0;
 }
-.comment-box .comment-message .message-box .title {
+.comment-box .scrollTable .comment-message .message-box .title {
   font-size: 20px;
   margin: 15px;
   margin-bottom: 20px;
   font-weight: 600;
 }
-.comment-box .comment-message .message-box .message {
+.comment-box .scrollTable .comment-message .message-box .message {
   margin-left: 15px;
   line-height: 30px;
 }
-.comment-box .comment-message .message-box .time {
+.comment-box .scrollTable .comment-message .message-box .time {
   line-height: 20px;
   margin-left: 15px;
   margin-top: 20px;
@@ -66,16 +73,42 @@
   font-size: 12px;
   color: #6e6d6d;
 }
-.comment-box .comment-body {
+.comment-box .scrollTable .comment-body {
   width: 100%;
-  height: 42%;
+}
+.comment-box .scrollTable .comment-body .discuss {
+  padding: 10px;
+  width: 380px;
+  margin-left: 20px;
+}
+.comment-box .scrollTable .comment-body .discuss .total {
+  color: #787777;
+  margin-left: 10px;
+}
+.comment-box .scrollTable .comment-body .text {
+  font-size: 13px;
+  margin-left: 200px;
+  color: #807f7f;
+}
+.comment-box .scrollTable::-webkit-scrollbar {
+  width: 0;
+  height: 0;
+  background: transparent;
+}
+.comment-box .scrollTable::-webkit-scrollbar-thumb {
+  background: transparent;
+}
+.comment-box .scrollTable::-webkit-scrollbar-track {
+  background: transparent;
 }
 .comment-box .comment-bottom {
   position: absolute;
   bottom: 25px;
   width: 438px;
-  height: 130px;
+  height: 15%;
   display: inline;
+  z-index: 999;
+  background-color: white;
 }
 .comment-box .comment-bottom .bottom-box {
   border-top: 1px solid #c2c0c0;
@@ -96,7 +129,7 @@
   margin-left: 8px;
   font-size: 15px;
 }
-.comment-box .comment-bottom .bottom-box .discuss {
+.comment-box .comment-bottom .bottom-box .discussIcon {
   position: absolute;
   left: 110px;
   top: 0px;
@@ -108,7 +141,7 @@
   margin-top: 15px;
   margin-left: 10px;
 }
-.comment-box .comment-bottom .bottom-box .discuss .discussNum {
+.comment-box .comment-bottom .bottom-box .discussIcon .discussNum {
   margin-left: 8px;
   font-size: 15px;
 }

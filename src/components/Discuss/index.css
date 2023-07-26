@@ -1,6 +1,33 @@
-.discuss {
-  padding: 10px;
-  width: 380px;
-  height: 100px;
-  background-color: black;
+.discussCard {
+  width: 100%;
+  margin-top: 10px;
+  margin-left: 10px;
+  display: flex;
+  flex-direction: row;
+}
+.discussCard .left {
+  width: 10%;
+}
+.discussCard .left .userPic {
+  width: 35px;
+  border-radius: 50%;
+  margin-right: 10px;
+}
+.discussCard .right {
+  width: 88%;
+  line-height: 26px;
+  margin-left: 7px;
+  padding-bottom: 10px;
+  border-bottom: 1px solid #c2c0c0;
+}
+.discussCard .right .userName {
+  color: #929090;
+}
+.discussCard .right .commentBox {
+  margin-top: 5px;
+}
+.discussCard .right .date {
+  margin-top: 10px;
+  font-size: 13px;
+  color: #8e8d8d;
 }

@@ -34,7 +34,6 @@ const Carousel = () => {
   };
   
   let leftlen = (1250*0.65-images.length*20) / 2
-  console.log(images[currentIndex]);
   
 
   return (

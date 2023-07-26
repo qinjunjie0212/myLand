@@ -1,4 +1,5 @@
 .comment-box {
+    overflow: hidden;
     width: 100%;
     height: 100%;
     border-top-right-radius: 20px;
@@ -40,44 +41,82 @@
             margin-right: 20px;
         }
     }
-    .comment-message {
-        .message-box {
-            width: 90%;
-            height: 90%;
-            margin-left: 5%;
-            margin-top: 5%;
-            .title {
-                font-size: 20px;
-                margin: 15px;
-                margin-bottom: 20px;
-                font-weight: 600;
+    .scrollTable {
+        overflow: auto;
+        height: 71%;
+        .comment-message {
+            .message-box {
+                width: 90%;
+                height: 90%;
+                margin-left: 5%;
+                margin-top: 5%;
+                .title {
+                    font-size: 20px;
+                    margin: 15px;
+                    margin-bottom: 20px;
+                    font-weight: 600;
+                }
+                .message {
+                    margin-left: 15px;
+                    line-height: 30px;
+                    // background-color: palegreen;
+                }
+                .time {
+                    line-height: 20px;
+                    margin-left: 15px;
+                    margin-top: 20px;
+                    margin-bottom: 20px;
+                    font-size: 12px;
+                    color: rgb(110, 109, 109);
+                }
+                border-bottom: 1px solid rgb(194, 192, 192);
             }
-            .message {
-                margin-left: 15px;
-                line-height: 30px;
-                // background-color: palegreen;
-            }
-            .time {
-                line-height: 20px;
-                margin-left: 15px;
-                margin-top: 20px;
-                margin-bottom: 20px;
-                font-size: 12px;
-                color: rgb(110, 109, 109);
-            }
-            border-bottom: 1px solid rgb(194, 192, 192);
         }
+        .comment-body {
+            width: 100%;
+            // height: 42%;
+            .discuss {
+                padding: 10px;
+                width: 380px;
+                // height: 100px;
+                // background-color: rgb(138, 241, 212);
+                margin-left: 20px;
+                .total {
+                    color: rgb(120, 119, 119);
+                    margin-left: 10px;
+                }
+            }
+            .text {
+                font-size: 13px;
+                margin-left: 200px;
+                color: rgb(128, 127, 127);
+            }
+        }
+        &::-webkit-scrollbar {
+            width: 0;
+            height: 0;
+            background: transparent;
+          }
+    
+          /* 设置滚动内容的样式 */
+          &::-webkit-scrollbar-thumb {
+            background: transparent;
+          }
+    
+          /* 设置滚轨的样式 */
+          &::-webkit-scrollbar-track {
+            background: transparent;
+          }
     }
-    .comment-body {
-        width: 100%;
-        height: 42%;
-    }
+   
     .comment-bottom {
         position: absolute;
         bottom: 25px;
         width: 438px;
-        height: 130px;
+        height: 15%;
         display: inline;
+        z-index: 999;
+        background-color: white;
         .bottom-box {
             border-top:1px solid rgb(194, 192, 192) ;
             width: 90%;
@@ -96,7 +135,7 @@
                     font-size: 15px;
                 }
             }
-            .discuss {
+            .discussIcon {
                 position: absolute;
                 left: 110px;
                 top: 0px;

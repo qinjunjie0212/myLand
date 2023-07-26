@@ -1,4 +1,4 @@
-import React,{useState} from 'react'
+import React,{useState,useRef,useEffect} from 'react'
 import './index.css'
 import {HeartOutlined,HeartFilled,MessageOutlined,EditOutlined} from '@ant-design/icons'
 import Discuss from '../Discuss'
@@ -29,6 +29,30 @@ const comments : comment[] = [
 
 const Comment: React.FC = () => {
     let [like,setLike] = useState(false)
+    let scrollTableRef = useRef<HTMLDivElement>(null)
+
+    useEffect(()=>{
+        const scrollTable = scrollTableRef.current;
+        if(scrollTable) {
+            scrollTable.addEventListener('wheel',handleWheel);
+        }
+
+        return () => {
+            if(scrollTable) {
+                scrollTable.removeEventListener('wheel',handleWheel);
+            }
+        }
+    },[])
+
+    const handleWheel = (e:WheelEvent) => {
+        e.stopPropagation()
+    }
+
+    // window.addEventListener('scroll', function(e) {
+    //     e.preventDefault();
+    //     window.scroll(0, 0);
+    // }, false);
+
     return (
         <div className='comment-box'>
             {/* 评论头像，用户名，关注按钮 */}
@@ -40,20 +64,29 @@ const Comment: React.FC = () => {
                 <div className='attention'>关注</div>
             </div>
             {/* 文案 */}
-            <div className='comment-message'>
-                <div className='message-box'>
-                    <div className='title'>高中两年买的鞋子</div>
-                    <div className='message'>
-                        高一还在穿aj1和dunk当热血男高<br></br>
-                        高二开始买asics salomon变成钓鱼老头 谁懂      
+            <div className='scrollTable' ref={scrollTableRef}>
+                <div className='comment-message'>
+                    <div className='message-box'>
+                        <div className='title'>高中两年买的鞋子</div>
+                        <div className='message'>
+                            高一还在穿aj1和dunk当热血男高<br></br>
+                            高二开始买asics salomon变成钓鱼老头 谁懂      
+                        </div>
+                        <div className='time'>发布时间 IP地址</div>
                     </div>
-                    <div className='time'>发布时间 IP地址</div>
-                </div>
 
-            </div>
-            {/* 评论 */}
-            <div className='comment-body'>
-                <Discuss />
+                </div>
+                {/* 评论 */}
+                <div className='comment-body'>
+                    <div className='discuss'>
+                        <div className='total'>共48条评论</div>
+                        <Discuss />
+                        <Discuss />
+                        <Discuss />
+                        <Discuss />
+                    </div>
+                    <div className='text'>已经到底了~</div>
+                </div>
             </div>
             {/* 评论页下方 */}
             <div className='comment-bottom'>
@@ -70,7 +103,7 @@ const Comment: React.FC = () => {
                         }
                         <span className='likeNum'>781</span>
                     </span>
-                    <span className='discuss'>
+                    <span className='discussIcon'>
                         <MessageOutlined />
                         <span className='discussNum'>781</span>
                     </span>

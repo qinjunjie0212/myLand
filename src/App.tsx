@@ -6,7 +6,9 @@ import {useRoutes} from 'react-router-dom'
 import './App.css'
 
 function App() {
-  const element = useRoutes(routes)
+  const element = useRoutes(routes)!
+  console.log('element',element.props.match.pathname);
+  
   // console.log(element);
   
   return (
