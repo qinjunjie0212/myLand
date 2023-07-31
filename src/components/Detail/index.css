@@ -8,6 +8,18 @@
   z-index: 566;
   display: flex;
 }
+.detail-wai .back {
+  width: 40px;
+  height: 40px;
+  border: 1px solid #919191;
+  color: #919191;
+  border-radius: 50%;
+  font-size: 25px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  cursor: pointer;
+}
 .detail-wai .detail-box {
   width: 1250px;
   height: 800px;

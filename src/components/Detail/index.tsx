@@ -2,6 +2,7 @@ import React from 'react'
 import './index.css'
 import Carousel from '../Carousel'
 import Comment from '../Comment'
+import {ArrowLeftOutlined} from '@ant-design/icons'
 
 const Detail: React.FC = () => {
     const query = new URLSearchParams(window.location.search)
@@ -12,8 +13,13 @@ const Detail: React.FC = () => {
                 'http://localhost:3000/static/media/cat.14a0caec35324158349a.jpg',
                 ]
 
+    function handleBack (){
+        window.history.back()
+    }
+
     return (
         <div className='detail-wai'>
+            <div className='back' onClick={handleBack}><ArrowLeftOutlined /></div>
             <div className='detail-box'>
                 {/* 图片轮播图 */}
                 <div className='detail-left'>

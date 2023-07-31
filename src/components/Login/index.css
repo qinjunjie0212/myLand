@@ -10,16 +10,23 @@
   
 }
 
-body {
+/* body {
   font-family: 'Open Sans', Helvetica, Arial, sans-serif;
   background: #ccdbea;
-}
+} */
 
-input, button {
+.ipt {
   border: none;
   outline: none;
   background: none;
   font-family: 'Open Sans', Helvetica, Arial, sans-serif;
+  display: block;
+  width: 100%;
+  margin-top: 5px;
+  padding-bottom: 5px;
+  font-size: 16px;
+  border-bottom: 1px solid rgba(0, 0, 0, 0.4);
+  text-align: center;
 }
 
 .tip {
@@ -42,6 +49,8 @@ input, button {
   position: relative;
   width: 640px;
   height: 100%;
+  left: -20px;
+  top: 30px;
   -webkit-transition: -webkit-transform 0.5s ease-in-out;
   transition: -webkit-transform 0.5s ease-in-out;
   transition: transform 0.5s ease-in-out;
@@ -68,7 +77,7 @@ input, button {
           transform: translate3d(-640px, 0, 0);
 }
 
-button {
+.btn {
   display: block;
   margin: 0 auto;
   width: 260px;
@@ -77,6 +86,10 @@ button {
   color: #fff;
   font-size: 15px;
   cursor: pointer;
+  border: none;
+  outline: none;
+  background: none;
+  font-family: 'Open Sans', Helvetica, Arial, sans-serif;
 }
 
 .img {
@@ -119,7 +132,7 @@ button {
 .img__text {
   z-index: 2;
   position: absolute;
-  left: 0;
+  left: -20px;
   top: 50px;
   width: 100%;
   padding: 0 20px;
@@ -165,17 +178,6 @@ button {
   border-radius: 50px;
   border: 2px solid rgb(255, 255, 255);
 }
-/* .img__btn:after {
-  content: '';
-  z-index: 2;
-  position: absolute;
-  left: 0;
-  top: 0;
-  width: 100%;
-  height: 100%;
-  border: 2px solid #fff;
-  border-radius: 30px;
-} */
 .img__btn span {
   position: absolute;
   left: 0;
@@ -209,32 +211,22 @@ button {
           transform: translateY(72px);
 }
 
-h2 {
+.loginBox .title {
   width: 100%;
   font-size: 26px;
   text-align: center;
 }
 
-label {
+.label {
   display: block;
   width: 260px;
   margin: 25px auto 0;
   text-align: center;
 }
-label span {
+.label span {
   font-size: 12px;
   color: #cfcfcf;
   text-transform: uppercase;
-}
-
-input {
-  display: block;
-  width: 100%;
-  margin-top: 5px;
-  padding-bottom: 5px;
-  font-size: 16px;
-  border-bottom: 1px solid rgba(0, 0, 0, 0.4);
-  text-align: center;
 }
 
 .forgot-pass {
