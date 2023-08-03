@@ -2,7 +2,7 @@ import React,{useRef,useEffect,useState,useContext} from 'react'
 import './index.css'
 import {useNavigate,useLocation} from 'react-router-dom'
 import axios from 'axios'
-import {UserContext} from '../UserContext.js'
+// import {UserContext} from '../UserContext.js'
 
 const Login: React.FC = () => {
     let btnRef = useRef<HTMLDivElement>(null)
@@ -10,9 +10,8 @@ const Login: React.FC = () => {
     const navigate = useNavigate()
     let nowUrl = useLocation().pathname
     let [btnState,setBtn] = useState(nowUrl==="/login" ? false : true)
-    const {setUser} = useContext(UserContext)
+    // const {setUser} = useContext(UserContext)
     const [registerMessage,setRegisterMessage] = useState('')
-
     const [register,setRegister] = useState({
         username:'',
         email:'',
@@ -42,7 +41,7 @@ const Login: React.FC = () => {
           // 登录成功
           if (response.status === 200) {
             console.log(response.data);
-            setUser(response.data)
+            // setUser(response.data)
             // 进行页面跳转或其他操作
             console.log('Register Successful!');
             setRegisterMessage("注册成功")
@@ -58,23 +57,24 @@ const Login: React.FC = () => {
           setRegisterMessage(error.response.data)
           // 在此处可以根据接口返回的错误信息进行具体错误处理
         });
-        // try{
-        //     await axios.post("http://localhost:8800/api/auth/register",register)
-        // }catch(rerr:any){
-        //     setRerr(rerr.response.data)
-        // }
     }
 
     const handleLogin = async (e:any) => {
         // 防止默认事件
         e.preventDefault()
 
-        axios.post('http://localhost:8800/api/auth/login', login)
+        axios.post('http://localhost:8800/api/auth/login', login,{
+            withCredentials: true
+        })
         .then(response => {
           // 登录成功
           if (response.status === 200) {
-            console.log(response.data);
-            setUser(response.data)
+            console.log(response);
+            // setUser(response.data)
+            // // console.log(response.cookie);
+            // setCurrentUser(response.data)
+            // console.log('222',currentUser);
+            localStorage.setItem("user",JSON.stringify(response.data))
             // 进行页面跳转或其他操作
             console.log('Login Successful!');
             navigate('/home'); // 示例中使用window.location.href进行页面跳转，你可以根据具体情况调整代码来实现你的需求
@@ -87,7 +87,10 @@ const Login: React.FC = () => {
         });
     }
 
-    console.log(rerr);
+    // useEffect(() => {
+    //     localStorage.setItem("user",JSON.stringify(currentUser))
+    // },[currentUser])
+    // console.log('111',currentUser);
     
 
     function changeBtn(){

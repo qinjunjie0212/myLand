@@ -4,21 +4,30 @@ import Navigation from './components/Navigation'
 import routes from './routes'
 import {useRoutes} from 'react-router-dom'
 import './App.css'
-import {UserProvider} from '../src/components/UserContext.js'
+// import {UserProvider} from '../src/components/UserContext.js'
+import {
+  QueryClient,
+  QueryClientProvider,
+  useQuery,
+} from '@tanstack/react-query'
 
 function App() {
   const element = useRoutes(routes)!
+
+  const queryClient = new QueryClient()
   
   // console.log(element);
   
   return (
-    <UserProvider>
-      {/* 侧边导航栏 */}
-      <Navigation />
-      <div className='content'>   
-        {element}
-      </div>
-    </UserProvider>
+    <QueryClientProvider client={queryClient}>
+      {/* <UserProvider> */}
+        {/* 侧边导航栏 */}
+        <Navigation />
+        <div className='content'>   
+          {element}
+        </div>
+      {/* </UserProvider> */}
+    </QueryClientProvider>
   );
 }
 

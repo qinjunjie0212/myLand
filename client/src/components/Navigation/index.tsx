@@ -1,8 +1,8 @@
 import React, { ReactNode, useState ,useContext} from 'react';
-import {MenuOutlined ,BellOutlined,SearchOutlined,RocketOutlined,ExportOutlined,RightOutlined, HomeOutlined } from '@ant-design/icons';
+import {MenuOutlined ,BellOutlined,SearchOutlined,RocketOutlined,ExportOutlined,RightOutlined, HomeOutlined,UserOutlined } from '@ant-design/icons';
 import './index.css'
 import {NavLink} from 'react-router-dom'
-import {UserContext} from '../UserContext.js'
+// import {UserContext} from '../UserContext.js'
 
 interface item{
   label:string;
@@ -13,10 +13,16 @@ interface item{
 
 const items: item[] = [
     {
-      label: '首页',
+      label: '发现',
       icon: <HomeOutlined />,
       key: 'homepage',
       path:'/home'
+    },
+    {
+      label: '朋友',
+      icon: <UserOutlined />,
+      key: 'friend',
+      path:'/friend'
     },
     {
       label: '发布',
@@ -32,9 +38,10 @@ const items: item[] = [
 ]
 
 const Navigation: React.FC = () => {
-    const {user} = useContext(UserContext)
+    // const {user} = useContext(UserContext)
     let [isOpen,setIsOpen] = useState(true)
     let [count,setCount] = useState(0)
+    let userInfomation = JSON.parse(localStorage.getItem('user')!)
     function handleOpen():any{
       setIsOpen(!isOpen)
       setCount(count+1)
@@ -43,18 +50,18 @@ const Navigation: React.FC = () => {
       <div> 
         {/* 上方logo和搜索框 */}
         <div className='Header'>
-          <div className='logo'></div>
+          <div className='logo'>{userInfomation.username}'s <br/><span style={{marginLeft:'50px',marginTop:'30px'}}>Land</span></div>
           <div className='search'>
             <input type="text" placeholder='搜索你感兴趣的吧...' className='search-input'/>
             <SearchOutlined className='SearchOutlined'/>
           </div>
-          <div className='about'>关于我们</div>
+          <div className='about'></div>
         </div>
         {/* 侧边栏  */}
         <div className={count ? (isOpen ? 'open Navigation-box' : 'noOpen Navigation-box') : 'Navigation-box'}>        
           <div className='Navigation-head'>
             <MenuOutlined className='MenuOutlined' onClick={handleOpen}/>
-            <span className={count ? (isOpen ? 'open userName' : 'noOpen userName') : 'userName'}>11</span>
+            <span className={count ? (isOpen ? 'open userName' : 'noOpen userName') : 'userName'}>{userInfomation.username}</span>
           </div>
           {/* 列表区 */}
           <ul className='Navigation-body'>
@@ -76,7 +83,7 @@ const Navigation: React.FC = () => {
           <div className='Navigation-foot'>
             <NavLink to='/homepage'>
               <div className='to-homepage'>
-                <div className={count ? (isOpen ? 'head-pic open-pic' : 'head-pic noOpen-pic') : 'head-pic'}></div>
+                <div className={count ? (isOpen ? 'head-pic open-pic' : 'head-pic noOpen-pic') : 'head-pic' } style={{backgroundImage:`url(${userInfomation.userpic})`,backgroundSize:'cover'}}></div>
                 <RightOutlined className={count ? (isOpen ? 'RightOutlined open-other' : 'RightOutlined noOpen-other') : 'RightOutlined'}/>
               </div>
             </NavLink>

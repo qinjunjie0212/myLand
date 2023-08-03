@@ -1,5 +1,5 @@
 .Header {
-  z-index: 8;
+  z-index: 0;
   position: fixed;
   width: 1600px;
   height: 150px;
@@ -13,13 +13,18 @@
 .Header .logo {
   width: 250px;
   height: 100px;
-  background-image: url(../../img/cat.jpg);
-  background-size: 100%;
+  font-family: land;
+  font-size: 40px;
+  position: absolute;
+  left: 40px;
+  font-weight: 500;
+  line-height: 50px;
 }
 .Header .search {
   display: flex;
   align-items: center;
-  position: relative;
+  position: absolute;
+  left: 550px;
 }
 .Header .search .search-input {
   width: 550px;

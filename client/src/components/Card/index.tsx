@@ -9,12 +9,11 @@ interface card{
     userName?:string;
     userPic?:string;
     likeNum?:number;
-    liked?:boolean;
     userId?:number;
     onClick?:()=>void
   }
 
-const Card: React.FC<card> = ({cardSrc,cardMessage,userName,userPic,likeNum,liked,onClick,userId}) => {
+const Card: React.FC<card> = ({cardSrc,cardMessage,userName,userPic,likeNum,userId}) => {
     let [like,setLike] = useState(false)
     // console.log(key);
     const navigate = useNavigate()
@@ -23,11 +22,14 @@ const Card: React.FC<card> = ({cardSrc,cardMessage,userName,userPic,likeNum,like
         console.log(cardMessage,userId);
         navigate(`/detail?id=${userId}`)
     }
+    // console.log('card',{cardSrc,cardMessage,userName,userPic,likeNum,userId});
+    console.log(cardSrc === null);
+    
 
     return (
         <div className='card-wai' onClick={()=>handleClick(userId)}>
             <div className='card-box'>
-                <img src={cardSrc} alt=""  className='cardSrc'/>
+                <img src={"./upload/"+cardSrc} alt=""  className='cardSrc' style={cardSrc === null ? {display:'none'} : {display:'block'}}/>
                 <div className='cardMessage'>{cardMessage}</div>
                 <div className='cardBotton'>
                     <div className='left'>
@@ -52,6 +54,7 @@ const Card: React.FC<card> = ({cardSrc,cardMessage,userName,userPic,likeNum,like
                     </div>
                 </div>
             </div>
+            {/* <hr style={{marginTop:'50px',backgroundColor:'black'}}/> */}
         </div>
         
     )

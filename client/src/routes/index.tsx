@@ -8,6 +8,7 @@ import Issue from '../components/Issue'
 import Inform from '../components/Inform'
 import Detail from '../components/Detail'
 import Login from '../components/Login'
+import Friend from '../components/Friend'
 
 const routes = [
     {
@@ -21,6 +22,10 @@ const routes = [
     {
         path:'/register',
         element:<Login></Login>
+    },
+    {
+        path:'/friend',
+        element:<Friend></Friend>
     },
     {
         path:'/home/*',

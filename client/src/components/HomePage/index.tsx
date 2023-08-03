@@ -5,7 +5,7 @@ import MyNote from '../MyNote'
 import {NavLink,useRoutes,Outlet} from 'react-router-dom'
 import routes from '../../routes'
 import axios from 'axios'
-import {UserContext} from '../UserContext.js'
+// import {UserContext} from '../UserContext.js'
 
 interface person{
     username:string;
@@ -26,26 +26,34 @@ const personInfo: person = {
     attebtion:5,
     fans:66,
 }
-
+ interface userInfo  {
+    id:string;
+    username:string;
+    email:string;
+    userpic:string;
+ }
 
 
 const HomePage: React.FC = () => {
-    const {user} = useContext(UserContext)
+    // const {user} = useContext(UserContext)
     const element = useRoutes(routes)    
     let [liItem,setLiItem] = useState<number | null>(null)
+    let userInfomation = JSON.parse(localStorage.getItem('user')!)
 
     function handleChange(index:number):any{
         setLiItem(index)
+        console.log(userInfomation);
+        
     }
 
 
     return (
         <div className='HomePage-box'>
             <div className='information-box'>
-                <div className='userPic' style={{backgroundImage:`url(${user.userpic})`,backgroundSize:'cover'}}></div>
+                <div className='userPic' style={{backgroundImage:`url(${userInfomation.userpic})`,backgroundSize:'cover'}}></div>
                 <div className='information'>
-                    <h2 className='userName'>{user.username}</h2>
-                    <div className='id-ip'>小红书号：{`${user.id}`.padStart(8, "0")} | IP属地：{personInfo.IP}</div>
+                    <h2 className='userName'>{userInfomation.username}</h2>
+                    <div className='id-ip'>小红书号：{`${userInfomation.id}`.padStart(8, "0")} | IP属地：{personInfo.IP}</div>
                     <div className='sex'>
                         {personInfo.sex==='man' ? (< ManOutlined style={{fontSize:'12px',marginLeft:'6px',marginRight:'3px'}}/>) : (<WomanOutlined style={{fontSize:'12px',marginLeft:'5px'}}/>)}
                         {personInfo.sex==='man' ? '男' : '女'}
