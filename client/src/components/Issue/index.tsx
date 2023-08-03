@@ -85,7 +85,6 @@ const Header: React.FC = () => {
             <form action="" className='form'>
                 <div className='title'>发布我的瞬间</div>
                 <textarea name="desc" id="" cols={30} rows={10} placeholder='写点什么吧...' onChange={handlePutBlog}></textarea>
-                <div>
                 <input 
                     type="file" 
                     className='file' 
@@ -95,13 +94,8 @@ const Header: React.FC = () => {
                 />
                 <div></div>
                 <div onClick={handleFile} className='addPic'><span>+</span></div>
-                <div className="chosed" style={{height:'200px'}}>
-                    <div  style={{width:'100px',height:'100px',position:'absolute',top:'20px',left:'200px',zIndex:'999'}}   >
-                    {file && <img className='file' alt='' src={URL.createObjectURL(file)}  style={{width:'100px',height:'100px',position:'absolute',top:'20px',left:'200px',zIndex:'999'}}/>}
+                    {file && <img className='filepic' alt='' src={URL.createObjectURL(file)}  style={{width:'100px',height:'100px',position:'absolute',left:'250px',bottom:'200px'}}/>}
                     {/* <img src="blob:http://localhost:3000/7b3d03bf-0517-4b88-8d52-3f053346bfd9" alt="" /> */}
-                    </div>
-                </div>
-                </div>
                 <button className='send' onClick={handleClick}>发布<SendOutlined className='SendOutlined'/></button>
             </form>
         </div>
