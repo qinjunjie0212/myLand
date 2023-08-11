@@ -5,6 +5,7 @@ import postRoutes from './routes/posts.js'
 import commentRoutes from './routes/comments.js'
 import likeRoutes from './routes/likes.js'
 import friendPostRoutes from './routes/friend.js'
+import detailRoutes from './routes/detail.js'
 import cors from 'cors'
 import cookieParser from 'cookie-parser'
 import multer from 'multer'
@@ -45,6 +46,7 @@ app.use('/api/comments',commentRoutes)
 app.use('/api/likes',likeRoutes)
 app.use('/api/auth',authRoutes)
 app.use('/api/friendposts',friendPostRoutes)
+app.use('/api/detail',detailRoutes)
 
 app.listen(8800,()=>{
     console.log("API working at 8800");

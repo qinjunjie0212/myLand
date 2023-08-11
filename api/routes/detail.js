@@ -1,8 +1,8 @@
 import express from "express";
-import {getLikes} from '../controllers/like.js'
+import {detail} from '../controllers/detail.js'
 
 const router = express.Router()
 
-router.get("/",getLikes)
+router.get("/",detail)
 
 export default router

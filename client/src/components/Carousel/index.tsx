@@ -2,15 +2,22 @@ import React, { useState } from 'react';
 import './index.css';
 import { RightOutlined, LeftOutlined } from '@ant-design/icons';
 
-const Carousel = () => {
+
+
+const Carousel = ({ detail }: { detail:any }) => {
   const [currentIndex, setCurrentIndex] = useState(0);
   const [mouse, setMouse] = useState(false);
   const [num,setNum] = useState(0)
-
+  // console.log('detail',detail.data);
+  
+  
   const images = [
-    'http://localhost:3000/static/media/cat.14a0caec35324158349a.jpg', 
-    'http://localhost:3000/static/media/headPic.bd8c0d3272fed423e847.jpg', 
+    // 'http://localhost:3000/static/media/cat.14a0caec35324158349a.jpg', 
+    // 'http://localhost:3000/static/media/headPic.bd8c0d3272fed423e847.jpg', 
+    detail && "./upload/"+ detail.img
     ];
+  // const images = detail[0]
+  
 
   const onNextClick = () => {
     setCurrentIndex((prevIndex) => (prevIndex + 1) % images.length);
@@ -22,7 +29,7 @@ const Carousel = () => {
 
   function handleLeave() {
     setMouse(true);
-    console.log(111);
+    // console.log(111);
     
     setTimeout(() => {
       setMouse(false);
@@ -64,7 +71,7 @@ const Carousel = () => {
         ))} */}
         <div className={mouse ? 'numSize numSize-leave' : 'numSize'}>{currentIndex+1}/{images.length}</div>
         <ul className="points" style={{left:leftlen+'px'}}>
-          {images.map((_, index) => (
+          {images.map((_:any, index:any) => (
             <li
               key={index}
               className={index === currentIndex ? 'active' : ''}

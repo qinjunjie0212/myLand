@@ -12,7 +12,7 @@ const Friend: React.FC = () => {
     console.log('friend',data);
 
     return (
-        <div>
+        <div className='home-box'>
             <Waterfall cardMessage={data} isloading={isLoading} error={error}/>
         </div>
         

@@ -8,10 +8,13 @@ import { makeRequest } from '../../axios'
 const Home: React.FC = () => {
     const { isLoading, error, data } = useQuery(['posts'], () =>
         makeRequest.get("/posts").then(res=>{
-          return res.data
+            console.log(isLoading, error, data);
+            return res.data
+            
+            
         })
-      )
-    
+    )
+
     return (
         <div className='home-box'>
             <ul className='select'>
@@ -21,7 +24,7 @@ const Home: React.FC = () => {
                 <li>标签</li>
                 <li>标签</li>
             </ul>
-            <div className='home-body'>
+            <div>
                 <Waterfall cardMessage={data} isloading={isLoading} error={error}/>
             </div>
             {/* <div style={{width:'200px',height:'200px',backgroundColor:'black',position:'absolute',top:'207px',left:'550px'}}></div> */}

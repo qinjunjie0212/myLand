@@ -34,7 +34,10 @@ const Card: React.FC<card> = ({cardSrc,cardMessage,userName,userPic,likeNum,user
                 <div className='cardBotton'>
                     <div className='left'>
                         <img src={userPic} alt="" className='userPic'/>
-                        <span className='userName'>{userName}</span>
+                        <div>
+                            <span className='userName'>{userName}</span>
+                            {/* <span>1 min ago</span> */}
+                        </div>
                     </div>
                     <div className='right'>
                         <span onClick={()=>{

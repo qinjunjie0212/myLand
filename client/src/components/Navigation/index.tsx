@@ -2,6 +2,7 @@ import React, { ReactNode, useState ,useContext} from 'react';
 import {MenuOutlined ,BellOutlined,SearchOutlined,RocketOutlined,ExportOutlined,RightOutlined, HomeOutlined,UserOutlined } from '@ant-design/icons';
 import './index.css'
 import {NavLink} from 'react-router-dom'
+import { Button} from 'antd';
 // import {UserContext} from '../UserContext.js'
 
 interface item{
@@ -50,7 +51,7 @@ const Navigation: React.FC = () => {
       <div> 
         {/* 上方logo和搜索框 */}
         <div className='Header'>
-          <div className='logo'>{userInfomation.username}'s <br/><span style={{marginLeft:'50px',marginTop:'30px'}}>Land</span></div>
+          <div className='logo'>{userInfomation?userInfomation.username+"'s":'MY'} <br/><span style={{marginLeft:'50px',marginTop:'30px'}}>Land</span></div>
           <div className='search'>
             <input type="text" placeholder='搜索你感兴趣的吧...' className='search-input'/>
             <SearchOutlined className='SearchOutlined'/>
@@ -61,7 +62,7 @@ const Navigation: React.FC = () => {
         <div className={count ? (isOpen ? 'open Navigation-box' : 'noOpen Navigation-box') : 'Navigation-box'}>        
           <div className='Navigation-head'>
             <MenuOutlined className='MenuOutlined' onClick={handleOpen}/>
-            <span className={count ? (isOpen ? 'open userName' : 'noOpen userName') : 'userName'}>{userInfomation.username}</span>
+            <span className={count ? (isOpen ? 'open userName' : 'noOpen userName') : 'userName'}>{userInfomation?userInfomation.username:'请登录'}</span>
           </div>
           {/* 列表区 */}
           <ul className='Navigation-body'>
@@ -72,8 +73,7 @@ const Navigation: React.FC = () => {
                           <NavLink to={item.path}>
                           <span className='item-icon'>{item.icon}</span>
                           <span className='item-label'>{item.label}</span>
-                          </NavLink>
-                          
+                          </NavLink> 
                         </li>
                 )
               })
@@ -81,13 +81,25 @@ const Navigation: React.FC = () => {
           </ul>
           {/* 下方区域 */}
           <div className='Navigation-foot'>
-            <NavLink to='/homepage'>
-              <div className='to-homepage'>
-                <div className={count ? (isOpen ? 'head-pic open-pic' : 'head-pic noOpen-pic') : 'head-pic' } style={{backgroundImage:`url(${userInfomation.userpic})`,backgroundSize:'cover'}}></div>
-                <RightOutlined className={count ? (isOpen ? 'RightOutlined open-other' : 'RightOutlined noOpen-other') : 'RightOutlined'}/>
+            {
+              userInfomation ? 
+              <div>
+                <NavLink to='/homepage'>
+                  <div className='to-homepage'>
+                    <div className={count ? (isOpen ? 'head-pic open-pic' : 'head-pic noOpen-pic') : 'head-pic' } style={{backgroundImage:`url(${userInfomation.userpic})`,backgroundSize:'cover'}}></div>
+                    <RightOutlined className={count ? (isOpen ? 'RightOutlined open-other' : 'RightOutlined noOpen-other') : 'RightOutlined'}/>
+                  </div>
+                </NavLink>
+                <ExportOutlined className={count ? (isOpen ? 'ExportOutlined open-back' : 'ExportOutlined noOpen-back') : 'ExportOutlined'}/>
               </div>
-            </NavLink>
-            <ExportOutlined className={count ? (isOpen ? 'ExportOutlined open-back' : 'ExportOutlined noOpen-back') : 'ExportOutlined'}/>
+              : 
+              <div className='toLogin'>
+                  <NavLink to='/login'>
+                    <span>前往登录</span>
+                    <RightOutlined />
+                  </NavLink>
+              </div>
+            }
           </div>
         </div>
       </div>
