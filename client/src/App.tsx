@@ -17,13 +17,19 @@ function App() {
   const queryClient = new QueryClient()
   
   // console.log(element);
+  console.log('距离',window.onscroll);
+  window.onbeforeunload = function() {
+    // 将滚动距离重置为零
+    window.scrollTo(0, 0);
+  }
   
   return (
     <QueryClientProvider client={queryClient}>
       {/* <UserProvider> */}
         {/* 侧边导航栏 */}
         <Navigation />
-        <div className='content'>   
+        <div className='content'>
+          {}  
           {element}
         </div>
       {/* </UserProvider> */}

@@ -11,10 +11,10 @@ import { Alert, Space, Spin } from 'antd';
   }
 
 const Waterfall: React.FC<WaterfallProps> = (cardMessage) => {
-      console.log(cardMessage.error&&cardMessage.error.response.data)
+      // console.log(cardMessage.error&&cardMessage.error.response.data)
       
     //   cardMessage.error!==null&&alert(cardMessage.error.response.data)
-      console.log('props',cardMessage);
+      // console.log('props',cardMessage);
 //     const navigate = useNavigate()
       useEffect(()=> {
         let cardMes = {
@@ -29,88 +29,102 @@ const Waterfall: React.FC<WaterfallProps> = (cardMessage) => {
         // useEffect(()=>{
           // fWaterFall()
           // window.addEventListener('scroll',function(){})
-          window.onscroll = function(){
-                if(fScrollTop()){
-                  // console.log(111);
-                  let container = document.querySelector('.home-body') as HTMLElement
+          // window.onscroll = function(){
+          //     //   if(fScrollTop()){
+          //     //     console.log(111);
+          //     //     let container = document.querySelector('.home-body') as HTMLElement
       
-                  let box = document.createElement('div')
-                  box.className = 'card'
+          //     //     let box = document.createElement('div')
+          //     //     box.className = 'card'
       
-                  let oItem = document.createElement('div')
-                  oItem.className = 'card-wai'
+          //     //     let oItem = document.createElement('div')
+          //     //     oItem.className = 'card-wai'
       
-                  let oCard = document.createElement('div')
-                  oCard.className = 'card-box'
+          //     //     let oCard = document.createElement('div')
+          //     //     oCard.className = 'card-box'
       
-                  // 传入的图片
-                  let oImg = document.createElement('img')
-                  oImg.src = cardMes.src
-                  //  文案
-                  let oMes = document.createElement('div')
-                  oMes.className = 'cardMessage'
-                  oMes.innerHTML = cardMes.message
-                  //  用户信息
-                  let userBox = document.createElement('div')
-                  userBox.className = 'cardBotton'
-                  // 左边容器，装头像用户名
-                  let userLeft = document.createElement('div')
-                  userLeft.className = 'left'
-                  // 头像
-                  let userPic = document.createElement('img')
-                  userPic.className = 'userPic'
-                  userPic.src = cardMes.userPic
-                  // 用户名
-                  let userName = document.createElement('span')
-                  userName.className = 'userName'
-                  userName.innerHTML = cardMes.userName
-                  // 右边容器，装点赞相关
-                  let userRight = document.createElement('div')
-                  userRight.className = 'right'
-                  let liked = document.createElement('span')
-                  liked.className = 'liked'
-                  // liked.innerHTML = '111'
-                  let likeNum = document.createElement('span')
-                  likeNum.className = 'likeNum'
-                  likeNum.innerHTML = cardMes.likeNum.toString()
+          //     //     // 传入的图片
+          //     //     let oImg = document.createElement('img')
+          //     //     oImg.src = cardMes.src
+          //     //     //  文案
+          //     //     let oMes = document.createElement('div')
+          //     //     oMes.className = 'cardMessage'
+          //     //     oMes.innerHTML = cardMes.message
+          //     //     //  用户信息
+          //     //     let userBox = document.createElement('div')
+          //     //     userBox.className = 'cardBotton'
+          //     //     // 左边容器，装头像用户名
+          //     //     let userLeft = document.createElement('div')
+          //     //     userLeft.className = 'left'
+          //     //     // 头像
+          //     //     let userPic = document.createElement('img')
+          //     //     userPic.className = 'userPic'
+          //     //     userPic.src = cardMes.userPic
+          //     //     // 用户名
+          //     //     let userName = document.createElement('span')
+          //     //     userName.className = 'userName'
+          //     //     userName.innerHTML = cardMes.userName
+          //     //     // 右边容器，装点赞相关
+          //     //     let userRight = document.createElement('div')
+          //     //     userRight.className = 'right'
+          //     //     let liked = document.createElement('span')
+          //     //     liked.className = 'liked'
+          //     //     // liked.innerHTML = '111'
+          //     //     let likeNum = document.createElement('span')
+          //     //     likeNum.className = 'likeNum'
+          //     //     likeNum.innerHTML = cardMes.likeNum.toString()
       
-                  //增加
-                  container.appendChild(box)
-                  box.appendChild(oItem)
-                  oItem.appendChild(oCard)
-                  oCard.appendChild(oImg)
-                  oCard.appendChild(oMes)
-                  oCard.appendChild(userBox)
-                  userBox.appendChild(userLeft)
-                  userLeft.appendChild(userPic)
-                  userLeft.appendChild(userName)
-                  userBox.appendChild(userRight)
-                  userRight.appendChild(liked)
-                  userRight.appendChild(liked)
-                  userRight.appendChild(likeNum)
+          //     //     //增加
+          //     //     container.appendChild(box)
+          //     //     box.appendChild(oItem)
+          //     //     oItem.appendChild(oCard)
+          //     //     oCard.appendChild(oImg)
+          //     //     oCard.appendChild(oMes)
+          //     //     oCard.appendChild(userBox)
+          //     //     userBox.appendChild(userLeft)
+          //     //     userLeft.appendChild(userPic)
+          //     //     userLeft.appendChild(userName)
+          //     //     userBox.appendChild(userRight)
+          //     //     userRight.appendChild(liked)
+          //     //     userRight.appendChild(liked)
+          //     //     userRight.appendChild(likeNum)
       
-              }
-                fWaterFall()
-          }
+          //     // }
+          //       fWaterFall()
+          // }
         // },[])
+        // 监听鼠标滚动事件
+        document.addEventListener("wheel", handleScroll);
+
+        // 处理滚动事件的函数
+        function handleScroll(e:any) {
+          // e.
+          // 滚动时执行的操作
+          fWaterFall()
+        }
+
+        // 在离开页面之前移除滚动事件的监听
+        // function removeScrollEvent() {
+        //   document.removeEventListener("wheel", handleScroll);
+        //   console.log('离开了');
+          
+        // }
+
+        // 调用该函数以删除原来的滚动事件（例如在离开页面时调用）
+        // removeScrollEvent();
   
         function fWaterFall(){
             let container = document.querySelector('.home-body') as HTMLElement
             let oItems = document.querySelectorAll('.card-wai') as NodeListOf<HTMLElement>;
             let homeBox = document.querySelector('.home-box') as HTMLElement
             
-            
             let boxWidth = homeBox.offsetWidth as number
-            console.log('111',boxWidth);
             
-            let itemWidth = oItems[0].offsetWidth as number
-            console.log('222',oItems[0]);
+            let itemWidth = oItems[0]?.offsetWidth as number
             
     
             // 一行的个数
             let num = Math.floor(boxWidth / itemWidth);
-            console.log(num);
-            
     
             // 设置container宽度
             container.style.width = num * itemWidth + 'px';
@@ -120,7 +134,7 @@ const Waterfall: React.FC<WaterfallProps> = (cardMessage) => {
             for (let i = 0; i < oItems.length; i++) {
                 if (i < num) {
                     //第一排
-                    hrr.push(Math.floor(oItems[i].offsetHeight + 20.67));
+                    hrr.push(oItems[i].offsetHeight);
                 } else {
                     // 第一排之后
                     let minH = Math.min(...hrr);
@@ -159,7 +173,7 @@ const Waterfall: React.FC<WaterfallProps> = (cardMessage) => {
           let scrollTop = document.documentElement.scrollTop;
           
           if (lastItem.offsetTop < clientHeight + scrollTop) {
-              console.log(lastItem);
+              // console.log(lastItem);
               
               return true;
           } else {
@@ -170,7 +184,7 @@ const Waterfall: React.FC<WaterfallProps> = (cardMessage) => {
   
     return (
         
-        <div className='home-body'>
+        <div className='home-body' style={{position:'relative'}}>
             
             {
               // {props}

@@ -13,7 +13,7 @@ import Friend from '../components/Friend'
 const routes = [
     {
         path:'/',
-        element:<Navigate to="/home"></Navigate>
+        element:<Navigate to="/login"></Navigate>
     },
     {
         path:'/login',

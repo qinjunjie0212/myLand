@@ -3,6 +3,8 @@ import {MenuOutlined ,BellOutlined,SearchOutlined,RocketOutlined,ExportOutlined,
 import './index.css'
 import {NavLink} from 'react-router-dom'
 import { Button} from 'antd';
+import { useQuery } from '@tanstack/react-query'
+import { makeRequest } from '../../axios'
 // import {UserContext} from '../UserContext.js'
 
 interface item{
@@ -47,11 +49,26 @@ const Navigation: React.FC = () => {
       setIsOpen(!isOpen)
       setCount(count+1)
     } 
+
+    const userId = userInfomation.id
+    let pic = ''
+    const { isLoading, error, data } = useQuery(['user'], () =>
+        makeRequest.get("/users/find/" + userId).then(res=>{
+            return res.data  
+        })
+    )
+    // console.log(data?.username);
+    if(data?.userpic===''){
+        pic = '	https://img0.baidu.com/it/u=3121974779,1726178990&fm=253&fmt=auto&app=138&f=JPEG?w=500&h=500'
+    }else {
+        pic = data?.userpic
+    }
+
     return (
       <div> 
         {/* 上方logo和搜索框 */}
         <div className='Header'>
-          <div className='logo'>{userInfomation?userInfomation.username+"'s":'MY'} <br/><span style={{marginLeft:'50px',marginTop:'30px'}}>Land</span></div>
+          <div className='logo'>{data?data.username+"'s":'MY'} <br/><span style={{marginLeft:'50px',marginTop:'30px'}}>Land</span></div>
           <div className='search'>
             <input type="text" placeholder='搜索你感兴趣的吧...' className='search-input'/>
             <SearchOutlined className='SearchOutlined'/>
@@ -62,7 +79,7 @@ const Navigation: React.FC = () => {
         <div className={count ? (isOpen ? 'open Navigation-box' : 'noOpen Navigation-box') : 'Navigation-box'}>        
           <div className='Navigation-head'>
             <MenuOutlined className='MenuOutlined' onClick={handleOpen}/>
-            <span className={count ? (isOpen ? 'open userName' : 'noOpen userName') : 'userName'}>{userInfomation?userInfomation.username:'请登录'}</span>
+            <span className={count ? (isOpen ? 'open userName' : 'noOpen userName') : 'userName'}>{data?data?.username:'请登录'}</span>
           </div>
           {/* 列表区 */}
           <ul className='Navigation-body'>
@@ -86,7 +103,9 @@ const Navigation: React.FC = () => {
               <div>
                 <NavLink to='/homepage'>
                   <div className='to-homepage'>
-                    <div className={count ? (isOpen ? 'head-pic open-pic' : 'head-pic noOpen-pic') : 'head-pic' } style={{backgroundImage:`url(${userInfomation.userpic})`,backgroundSize:'cover'}}></div>
+                    <div style={{backgroundImage:`url(${pic})`,backgroundSize:'cover'}}>
+                      <img src={"/upload/"+pic} alt="" className={count ? (isOpen ? 'head-pic open-pic' : 'head-pic noOpen-pic') : 'head-pic' }/>
+                    </div>
                     <RightOutlined className={count ? (isOpen ? 'RightOutlined open-other' : 'RightOutlined noOpen-other') : 'RightOutlined'}/>
                   </div>
                 </NavLink>

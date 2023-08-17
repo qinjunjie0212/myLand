@@ -23,7 +23,7 @@ const Card: React.FC<card> = ({cardSrc,cardMessage,userName,userPic,likeNum,user
         navigate(`/detail?id=${userId}`)
     }
     // console.log('card',{cardSrc,cardMessage,userName,userPic,likeNum,userId});
-    console.log(cardSrc === null);
+    // console.log(cardSrc === null);
     
 
     return (
@@ -33,13 +33,13 @@ const Card: React.FC<card> = ({cardSrc,cardMessage,userName,userPic,likeNum,user
                 <div className='cardMessage'>{cardMessage}</div>
                 <div className='cardBotton'>
                     <div className='left'>
-                        <img src={userPic} alt="" className='userPic'/>
+                        <img src={"./upload/"+userPic} alt="" className='userPic'/>
                         <div>
                             <span className='userName'>{userName}</span>
                             {/* <span>1 min ago</span> */}
                         </div>
                     </div>
-                    <div className='right'>
+                    {/* <div className='right'>
                         <span onClick={()=>{
                             setLike(!like) 
                         }}
@@ -54,7 +54,7 @@ const Card: React.FC<card> = ({cardSrc,cardMessage,userName,userPic,likeNum,user
                         <span className='likeNum'>
                             {likeNum}
                         </span>
-                    </div>
+                    </div> */}
                 </div>
             </div>
             {/* <hr style={{marginTop:'50px',backgroundColor:'black'}}/> */}

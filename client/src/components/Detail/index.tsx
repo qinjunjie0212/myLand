@@ -30,7 +30,9 @@ const Detail: React.FC = () => {
     function handleBack() {
       window.history.back();
     }
-  
+    window.addEventListener('wheel', (event) => {
+        event.preventDefault();
+    });
     return (
       <div className='detail-wai'>
         <div className='back' onClick={handleBack}><ArrowLeftOutlined /></div>

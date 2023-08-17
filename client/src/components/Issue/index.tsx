@@ -24,7 +24,6 @@ const Header: React.FC = () => {
     useEffect(() => {
         console.log(file);
     }, [file]);
-    console.log('555',file);
     
 
     const handleClick = async (e: any) => {

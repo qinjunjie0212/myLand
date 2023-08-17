@@ -4,7 +4,7 @@ import {HeartOutlined,HeartFilled,MessageOutlined,EditOutlined} from '@ant-desig
 import Discuss from '../Discuss'
 import { makeRequest } from '../../axios'
 import { useQuery } from '@tanstack/react-query'
-import axios from 'axios'
+import axios, { AxiosRequestConfig } from 'axios'
 import moment from 'moment'
 
 interface commentProps {
@@ -29,8 +29,10 @@ const Comment: React.FC<commentProps> = ({userData,picData,postId}) => {
     const [comments, setComments] = useState([]);
     const [send,setSend] = useState(0)
     const [likeNum,setLikeNum] = useState(0)
-    const [likePeople,setLikePeople] = useState([])
+    const [likePeople, setLikePeople] = useState<Array<number>>([]);
+    const [followed,setFollowed] = useState<Array<number>>([])
     let userInfomation = JSON.parse(localStorage.getItem('user')!)
+    const userId = userInfomation.id
 
     useEffect(()=>{
         const scrollTable = scrollTableRef.current;
@@ -65,12 +67,11 @@ const Comment: React.FC<commentProps> = ({userData,picData,postId}) => {
             const response = await makeRequest.get("/likes?postId=" + postId);
             setLikeNum(response.data.length)
             setLikePeople(response.data)
-            console.log('135225',response.data);
         };
         if (postId) {
             fetchData();
         }
-      }, [postId]);
+      }, [postId,likePeople]);
     
     const handleClick = async (e: any) => {
         e.preventDefault();
@@ -88,6 +89,36 @@ const Comment: React.FC<commentProps> = ({userData,picData,postId}) => {
             console.log('发送失败！',error);        
         })
       };
+
+      const handleLike = async (e: any) => {
+        e.preventDefault();        
+        if(likePeople.includes(userInfomation.id)){           
+            makeRequest.delete('/likes?postId=' + postId)
+        }else {
+            makeRequest.post('/likes?postId=' + postId)
+        }
+      }
+
+    //   关注
+      const handleFollow = async (e: any) => {
+        e.preventDefault();        
+        if(followed.includes(userData.id)){           
+            makeRequest.delete('/relationship?userId=' + userData.id)
+        }else {
+            makeRequest.post('/relationship?userId=' + userData.id)
+        }
+      }
+
+      useEffect(() => {
+        const fetchData = async () => {
+            const response = await makeRequest.get("/relationship/followed?followedUserid=" + userId);
+            setFollowed(response.data);
+        };
+        if (postId) {
+            fetchData();
+        }
+      }, [postId,followed]);
+      console.log(userData.id , userId);
       
       
     return (
@@ -98,7 +129,16 @@ const Comment: React.FC<commentProps> = ({userData,picData,postId}) => {
                     <img className='userPic' src={userData.userpic}></img>
                     <span className='userName'>{userData.username}</span>
                 </div>
-                <div className='attention'>关注</div>
+                {userData.id === userId ? (
+                    <div className='attention' onClick={handleFollow} style={{ backgroundColor: '#7d7d7d', color: 'black' }}>删除</div>
+                    ) : (
+                    followed.includes(userData.id) ? (
+                        <div className='attention' onClick={handleFollow} style={{ backgroundColor: '#7d7d7d', color: 'black' }}>正在关注</div>
+                    ) : (
+                        <div className='attention' onClick={handleFollow}>关注</div>
+                    )
+                    )
+                }
             </div>
             {/* 文案 */}
             <div className='scrollTable' ref={scrollTableRef}>
@@ -138,10 +178,9 @@ const Comment: React.FC<commentProps> = ({userData,picData,postId}) => {
                     className='liked'
                     >
                         {           
-                            // likePeople.toA.includes(userInfomation.id) ? 
-                            userInfomation ?
-                            <HeartFilled style={{color:'red'}}/> : 
-                            <HeartOutlined />
+                            likePeople.includes(userInfomation.id) ? 
+                            <HeartFilled style={{color:'red'}} onClick={handleLike}/> : 
+                            <HeartOutlined onClick={handleLike}/>
                         }
                         <span className='likeNum'> {likeNum} 人喜欢</span>
                     </span>

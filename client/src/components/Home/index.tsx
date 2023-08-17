@@ -9,9 +9,7 @@ const Home: React.FC = () => {
     const { isLoading, error, data } = useQuery(['posts'], () =>
         makeRequest.get("/posts").then(res=>{
             console.log(isLoading, error, data);
-            return res.data
-            
-            
+            return res.data  
         })
     )
 
