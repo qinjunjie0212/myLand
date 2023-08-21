@@ -41,3 +41,28 @@ export const addPost = (req,res) => {
         })
     })
 }
+
+export const deletePost = (req,res) => {
+    console.log(111);
+    // 查看用户token，如果没有，不能访问该页
+    const token = req.cookies.accessToken;
+    if(!token) return res.status(401).json("还没有登录哦，请先登录！")
+    
+    jwt.verify(token,"secretkey",(err,userInfo)=>{
+        if(err) return res.status(403).json("登录已过期，请重新登录！")
+
+        // 把数据库中所有的帖子都展示出来
+        const q = "DELETE FROM posts WHERE `id` = ? AND `userid` = ?"
+
+        db.query(q,[req.params.id,userInfo.id],(err,data)=>{
+            console.log(req.params.id,userInfo.id);
+            if(err) {
+                console.log(err);
+                return res.status(500).json(err)
+            }
+            // console.log(userInfo.id,data);
+            return res.status(200).json("删除帖子成功")
+            
+        })
+    })
+}

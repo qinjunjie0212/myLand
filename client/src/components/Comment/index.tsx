@@ -118,7 +118,13 @@ const Comment: React.FC<commentProps> = ({userData,picData,postId}) => {
             fetchData();
         }
       }, [postId,followed]);
-      console.log(userData.id , userId);
+
+      const handleDelete = async (e: any) => {
+        e.preventDefault();                
+            const message = await makeRequest.delete('/posts/' + picData.id)
+            console.log(message.data);
+            
+      }
       
       
     return (
@@ -130,7 +136,7 @@ const Comment: React.FC<commentProps> = ({userData,picData,postId}) => {
                     <span className='userName'>{userData.username}</span>
                 </div>
                 {userData.id === userId ? (
-                    <div className='attention' onClick={handleFollow} style={{ backgroundColor: '#7d7d7d', color: 'black' }}>删除</div>
+                    <div className='attention' onClick={handleDelete} style={{ backgroundColor: '#7d7d7d', color: 'black' }}>删除</div>
                     ) : (
                     followed.includes(userData.id) ? (
                         <div className='attention' onClick={handleFollow} style={{ backgroundColor: '#7d7d7d', color: 'black' }}>正在关注</div>
